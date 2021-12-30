@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks Page</title>
+</head>
+<body>
+    <h1>Welcome to tasks page!</h1>
+    <br>
+    <h3>Here are the tasks for today</h3>
+
+    <form action="/tasks/add/" method="post">
+        {% csrf_token %}
+        <label for="title">Title : </label>
+        <input id="title" type="text" name="titletext">
+        <input type="submit" value="submit">
+    </form>
+
+    <p>predefined tasks</p>
+
+    {% for task in task_list %}
+
+        {% if not task.is_deleted %}
+        <p>{{task.id}}</p>
+        <p>{{task.title}}</p>
+        <p>{{task.completed}}</p>
+        <a href="/tasks/update/{{task.id}}">Update</a>
+        <a href="/tasks/delete/{{task.id}}">Delete</a>
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <br>
+
+    {% endfor %}
+
+
+    <p>added tasks</p>
+
+
+    {% for added_task in added_tasks %}
+    <p>{{added_task}}</p>
+    {% endfor %}
+</body>
+</html>
