@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-2%a+tw$utf6-g2ylnb#%9$(3djbea*5#$nzyu3i6ph4_ukju_!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['harshithtodo.herokuapp.com']
 
 
 # Application definition
@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'daydo.wsgi.application'
 DATABASES={
    'default':{
       'ENGINE':'django.db.backends.postgresql_psycopg2',
-      'NAME':'postgres2',
-      'USER':'postgres',
-      'PASSWORD':'admin',
-      'HOST':'localhost',
+      'NAME':'d106hh7b2rcjvu',
+      'USER':'mjccwqfybhmwtt',
+      'PASSWORD':'cf36bd695bdd308c715704ccfb3faa108b62b6d3e14f96f05eaa83d37a277771',
+      'HOST':'ec2-52-70-205-234.compute-1.amazonaws.com',
       'PORT':'5432',
    }
 }
@@ -128,7 +128,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
+
+import django_heroku
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_URL = "/static/"
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
