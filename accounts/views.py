@@ -99,24 +99,21 @@ def signup(request):
         confirm_password = request.POST["confirm_password"]
         
         if password==confirm_password:
-            print("Checking confirm password done")
-            try:
-                if User.objects.filter(username=user_name).exists():
-                    print("inside username exists")
-                    messages.info(request,"Username Already Exists,try again")
-                    return redirect("signup")
-                elif User.objects.filter(email=email_id).exists():
-                    print("inside email exista")
-                    messages.info(request,"Email-id Already Exists")
-                    return redirect("signup")
-                else:
-                    print("inside none exista, create user")
-                    user = User.objects.create_user(username=user_name,password=password,email=email_id,first_name=first_name,last_name=last_name)
-                    user.save()
-                    create_default_tasks(user)
-                    print("I think user is created")
-            except Exception as err:
-                print(err)
+
+            if User.objects.filter(username=user_name).exists():
+
+                messages.info(request,"Username Already Exists,try again")
+                return redirect("signup")
+            elif User.objects.filter(email=email_id).exists():
+
+                messages.info(request,"Email-id Already Exists")
+                return redirect("signup")
+            else:
+
+                user = User.objects.create_user(username=user_name,password=password,email=email_id,first_name=first_name,last_name=last_name)
+                user.save()
+                create_default_tasks(user)
+
         else:
             messages.info(request,"Passwords Doesn't match")
             return redirect("signup")
