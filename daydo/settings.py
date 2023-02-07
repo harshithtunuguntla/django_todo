@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'daydo.wsgi.application'
 DATABASES={
    'default':{
       'ENGINE':'django.db.backends.postgresql_psycopg2',
-      'NAME':'d106hh7b2rcjvu',
-      'USER':'mjccwqfybhmwtt',
-      'PASSWORD':'cf36bd695bdd308c715704ccfb3faa108b62b6d3e14f96f05eaa83d37a277771',
-      'HOST':'ec2-52-70-205-234.compute-1.amazonaws.com',
-      'PORT':'5432',
+      'NAME':'railway',
+      'USER':'postgres',
+      'PASSWORD':'bF72Iypk92Zlemdc8L6X',
+      'HOST':'containers-us-west-188.railway.app',
+      'PORT':'7973',
    }
 }
 
